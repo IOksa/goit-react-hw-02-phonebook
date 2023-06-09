@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
 
 
-class Form extends Component{
+class ContactForm extends Component{
     state = {
         name: '',
+        number: '',
     };
 
 
 
-    handleChange = e => {
-        this.setState({ name: e.currentTarget.value });
+    handleChange = ({ target: { name, value } }) => {
+        this.setState({ [name]: value });
+        console.log("handleChange this.setState=", this.state);
 
     };
     
     handleSubmit = e => {
         e.preventDefault();
        
-        this.props.onSubmit(this.state.name);
+        this.props.onSubmit(this.state);
     
-        this.setState({ name: '' });
+        this.setState({ name: '', number: '' });
     };
  
 
@@ -26,6 +28,7 @@ class Form extends Component{
         console.log(this.state.name);
         return(
             <form onSubmit={this.handleSubmit}>
+                <label>Name
                 <input
                     type="name"
                     name="name"
@@ -34,9 +37,20 @@ class Form extends Component{
                     required
                     value={this.state.name}
                     onChange={this.handleChange}
-                    id={this.nameInputId}
+                    
                     />
-
+                </label>
+                <label>Number
+                <input
+                    type="tel"
+                    name="number"
+                    pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                    title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                    required
+                    value={this.state.number}
+                    onChange={this.handleChange}
+                    />
+                </label>
                 <button type="submit" className="Form__button">
                 Add contact
                 </button>
@@ -49,4 +63,4 @@ class Form extends Component{
     }  
 }
 
-export default Form;
+export default ContactForm;

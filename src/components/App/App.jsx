@@ -1,39 +1,36 @@
 import React, {Component} from 'react';
-import Form from './Form/Form';
+import ContactForm from '../ContactForm/ContactForm';
 import { nanoid } from 'nanoid';
 import ContactsList from '../ContactsList/ContactsList';
 
 class App extends Component{
   state = {
     contacts: [],
-    name: ''
+
   }
 
-  addContact = name => {
+  addContact = ({name, number})=> {
     const contact = {
       id: nanoid(),
       name,
+      number,
 
     };
-
-    console.log("this.setState=",this.setState(({ contacts }) => ({
-      contacts: [contact],
-    })));
-    console.log("contact App=", contact);
-    console.log(this.contacts);
+    console.log("addContact name=", name);
+    console.log("addContact contact=", contact);
+    this.setState(({ contacts }) => ({contacts: [ ...contacts, contact]}));
+    console.log("this.state.contacts=", this.state);
   };
 
   render(){
     return(
     <>
     <h1>Phonebook</h1>
+    <ContactForm onSubmit={this.addContact}/>
+
     <div>
-        <p>Name</p>
-        <Form onSubmit={this.addContact}/>
-    </div>
-    <div>
-      <p>Contacts</p>
-      <ContactsList contacts={this.contacts} />
+      <h2>Contacts</h2>
+      <ContactsList contacts={this.state.contacts} />
     </div>
     </>
     );
