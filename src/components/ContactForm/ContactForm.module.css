@@ -1,9 +1,9 @@
 .phonebook__formContact{
-    width: 500px;
+    width: 350px;
     border: 1px solid #363333;
 
     padding: 24px;
-    margin-left: 36px;
+    margin-bottom: 50px;
 
     display: flex;
     flex-direction: column;
@@ -21,7 +21,7 @@
 
     border: 1px solid rgba(33, 33, 33, 0.2);
     border-radius: 4px;
-    background-color: #ffffff;
+
     padding: 0 0 0 8px;
 
     outline: none;
@@ -30,6 +30,26 @@
 }
 
 .phonebook__formContactInput:focus{
-    /* border-color: rgba(52, 1, 255, 0.2);
-    background-color: #ffffff; */
+    border: 3px solid #0b5394;
+    
+}
+
+.form__button{
+    width: 250px;
+    height: 50px;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    background-color: #3d85c6;
+    color: #ffffff;
+    cursor: pointer;
+
+    
+}
+
+.form__button:hover, 
+.form__button:focus{
+    background-color: #0b5394;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }

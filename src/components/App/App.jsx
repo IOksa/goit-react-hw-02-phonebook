@@ -3,6 +3,7 @@ import ContactForm from '../ContactForm/ContactForm';
 import { nanoid } from 'nanoid';
 import ContactsList from '../ContactsList/ContactsList';
 import Filter from '../Filter/Filter';
+import Container from '../Container/Container';
 import css from './App.module.css';
 
 class App extends Component{
@@ -69,10 +70,12 @@ class App extends Component{
 
     return(
     <>
+    <Container>
     <h1 className={css.phonebook__title}>Phonebook</h1>
     <ContactForm onSubmit={this.addContact}/>
     <Filter value={filter} onChange={this.changeFilter} />
     <ContactsList contacts={visibleContacts} onDeleteContact={this.deleteContact}/>
+    </Container>
     </>
     );
   }

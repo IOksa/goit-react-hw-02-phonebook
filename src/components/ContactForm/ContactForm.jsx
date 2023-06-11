@@ -52,7 +52,7 @@ class ContactForm extends Component{
                     className={css.phonebook__formContactInput}
                     />
                
-                <button type="submit" className="Form__button">
+                <button type="submit" className={css.form__button}>
                 Add contact
                 </button>
             </form>
